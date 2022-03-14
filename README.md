@@ -52,3 +52,9 @@ RPC不直接用HTTP协议的一个原因是无法实现请求跟响应关联。�
 3、尽量使用简单的、常用的开发语言原生的对象，尤其是集合类。
 
 4、对象不要有复杂的继承关系，最好不要有父子类的情况。
+
+
+
+
+
+![Lark20210106-113819.png](https://s0.lgstatic.com/i/image2/M01/04/B4/CgpVE1_1MSWAQTIAAARy1QowhGA148.png)
