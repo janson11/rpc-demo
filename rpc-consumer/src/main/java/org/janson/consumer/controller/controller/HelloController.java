@@ -1,4 +1,4 @@
-package org.janson.consumer.controller;
+package org.janson.consumer.controller.controller;
 
 import org.janson.consumer.controller.annotation.RpcReference;
 import org.janson.facade.HelloFacade;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @RpcReference(serviceVersion = "1.0.0", tiemout = 3000)
+    @RpcReference(serviceVersion = "1.0.0", timeout = 3000)
     private HelloFacade helloFacade;
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
