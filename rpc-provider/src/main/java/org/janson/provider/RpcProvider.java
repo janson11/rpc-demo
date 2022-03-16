@@ -1,4 +1,4 @@
-package org.janson.provider.annotation;
+package org.janson.provider;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -13,6 +13,7 @@ import org.janson.core.ServiceMeta;
 import org.janson.protocol.codec.RpcDecoder;
 import org.janson.protocol.codec.RpcEncoder;
 import org.janson.protocol.handler.RpcRequestHandler;
+import org.janson.provider.annotation.RpcService;
 import org.janson.registry.RegistryService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
@@ -45,7 +46,11 @@ public class RpcProvider implements InitializingBean, BeanPostProcessor {
     @Override
     public void afterPropertiesSet() throws Exception {
         new Thread(() -> {
-
+            try {
+                startRpcServer();
+            } catch (Exception e) {
+                log.error("start rpc server error", e);
+            }
         }).start();
     }
 

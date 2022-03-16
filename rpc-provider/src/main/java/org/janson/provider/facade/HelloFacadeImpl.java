@@ -1,4 +1,4 @@
-package org.janson.provider;
+package org.janson.provider.facade;
 
 import org.janson.facade.HelloFacade;
 import org.janson.provider.annotation.RpcService;

@@ -1,7 +1,8 @@
 package org.janson.provider;
 
 import org.janson.core.RpcProperties;
-import org.janson.provider.annotation.RpcProvider;
+import org.janson.registry.RegistryFactory;
+import org.janson.registry.RegistryService;
 import org.janson.registry.RegistryType;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -24,8 +25,8 @@ public class RpcProviderAutoConfiguration {
     @Bean
     public RpcProvider init() throws Exception {
         RegistryType type = RegistryType.valueOf(rpcProperties.getRegistryType());
-        return null;
-
+        RegistryService registryService = RegistryFactory.getInstance(rpcProperties.getRegistryAddr(), type);
+        return new RpcProvider(rpcProperties.getServicePort(), registryService);
     }
 
 
