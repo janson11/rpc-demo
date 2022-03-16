@@ -65,15 +65,15 @@ public class RpcConsumerPostProcessor implements ApplicationContextAware, BeanCl
     private void parseRpcReference(Field field) {
         RpcReference annotation = AnnotationUtils.getAnnotation(field, RpcReference.class);
         if (annotation != null) {
-            BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(RpcReference.class);
+            BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(RpcReferenceBean.class);
             beanDefinitionBuilder.setInitMethodName(RpcConstants.INIT_METHOD_NAME);
             beanDefinitionBuilder.addPropertyValue("interfaceClass", field.getType());
             beanDefinitionBuilder.addPropertyValue("serviceVersion", annotation.serviceVersion());
             beanDefinitionBuilder.addPropertyValue("registryType", annotation.registryType());
             beanDefinitionBuilder.addPropertyValue("registryAddress", annotation.registryAddress());
             beanDefinitionBuilder.addPropertyValue("timeout", annotation.timeout());
-            AbstractBeanDefinition beanDefiniton = beanDefinitionBuilder.getBeanDefinition();
-            rpcRefBeanDefinitions.put(field.getName(), beanDefiniton);
+            AbstractBeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
+            rpcRefBeanDefinitions.put(field.getName(), beanDefinition);
         }
     }
 
